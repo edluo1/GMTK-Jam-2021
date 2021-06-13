@@ -22,7 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Tug",
+                    "name": "Boost",
                     "type": "Button",
                     "id": "c267373a-1fdc-440d-8133-a2880ffc957c",
                     "expectedControlType": "Button",
@@ -159,7 +159,7 @@
                     "interactions": "Press",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Tug",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -170,7 +170,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Tug",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd3f966b-a734-4a5e-9a83-bba7f77dac55",
+                    "path": "<Keyboard>/leftCtrl",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -44,7 +44,7 @@ public class Rope : MonoBehaviour
         this.Simulate();
     }
 
-    Vector2 RopeDirection() {
+    public Vector2 RopeDirection() {
         // Provides the direction of the rope from origin to end as a unit vector
         Vector2 direction = (Vector2)ropeEnd.position - (Vector2)ropeOrigin.position;
         return direction.normalized;
