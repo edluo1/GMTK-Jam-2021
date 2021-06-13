@@ -2443,6 +2443,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6121522246234537771, guid: 7eb9055bdfd6c80488b374d312d205ba, type: 3}
+      propertyPath: connectedWire
+      value: 
+      objectReference: {fileID: 961910626}
     - target: {fileID: 6121522246234537774, guid: 7eb9055bdfd6c80488b374d312d205ba, type: 3}
       propertyPath: m_Name
       value: Main Character

@@ -46,7 +46,7 @@ public class CharacterController2D : MonoBehaviour
             OnCrouchEvent = new BoolEvent();
 
         if (OnBoostEvent == null)
-            OnBoostEvent = new BoolEvent();
+            OnBoostEvent = new UnityEvent();
     }
 
     private void FixedUpdate()
