@@ -145,4 +145,12 @@ public class Rope : MonoBehaviour
             this.posOld = pos;
         }
     }
+
+    public void OnDrawGizmos()
+    {
+        if (ropeOrigin && ropeEnd) {
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(ropeOrigin.position, ropeEnd.position);
+        }
+    }
 }

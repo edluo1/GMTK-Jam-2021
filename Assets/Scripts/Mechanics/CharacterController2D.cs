@@ -144,6 +144,7 @@ public class CharacterController2D : MonoBehaviour
         {
             // Add a force to the player in the direction of the rope.
             m_HasBoost = false;
+            m_Grounded = false;
             m_Rigidbody2D.AddForce(m_BoostForce * connectedWire.RopeDirection());
             OnBoostEvent.Invoke();
         }
