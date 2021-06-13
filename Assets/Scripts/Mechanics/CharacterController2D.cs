@@ -22,6 +22,8 @@ public class CharacterController2D : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     private bool m_HasBoost = true;  // For determining if player can boost. Player regains boost after touching the ground
 
+    [SerializeField] private bool m_BoostUnlocked = false; // For determining if boost was unlocked.
+
     [Header("Events")]
     [Space]
 
@@ -140,7 +142,7 @@ public class CharacterController2D : MonoBehaviour
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
         }
         // If the player should boost...
-        if (m_HasBoost && boost)
+        if (m_BoostUnlocked && m_HasBoost && boost)
         {
             // Add a force to the player in the direction of the rope.
             m_HasBoost = false;
@@ -160,5 +162,9 @@ public class CharacterController2D : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public void UnlockBoost(bool unlock) {
+        m_BoostUnlocked = unlock;
     }
 }

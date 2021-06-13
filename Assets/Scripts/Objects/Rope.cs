@@ -10,7 +10,7 @@ public class Rope : MonoBehaviour
     private LineRenderer lineRenderer;
     private List<RopeSegment> ropeSegments = new List<RopeSegment>();
     private float ropeSegLen = 0.25f;
-    private int segmentLength = 35;
+    [SerializeField] private int segmentLength = 35;
 
     private float lineWidth = 0.1f;
 
@@ -76,10 +76,11 @@ public class Rope : MonoBehaviour
         firstSegment.posNow = ropeOrigin.position;
         this.ropeSegments[0] = firstSegment;
 
-
-        RopeSegment endSegment = this.ropeSegments[this.segmentLength - 1];
-        endSegment.posNow = ropeEnd.position;
-        this.ropeSegments[this.segmentLength - 1] = endSegment;
+        if (ropeEnd) {
+            RopeSegment endSegment = this.ropeSegments[this.segmentLength - 1];
+            endSegment.posNow = ropeEnd.position;
+            this.ropeSegments[this.segmentLength - 1] = endSegment;
+        }
 
         for (int i = 0; i < this.segmentLength - 1; i++)
         {

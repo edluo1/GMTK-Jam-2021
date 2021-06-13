@@ -14,7 +14,7 @@ public class WireEndpointSetter : MonoBehaviour
         if (other.gameObject.transform.position.x > transform.position.x) {
             rope.SetRopeEnd(rightWirePos);
         }
-        else if (other.gameObject.transform.position.x > transform.position.x) {
+        else if (other.gameObject.transform.position.x < transform.position.x) {
             rope.SetRopeEnd(leftWirePos);
         }
     }
