@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayerControlActions controls;
+
     public CharacterController2D controller;
 
     public float runSpeed = 40f;
+
+    public bool boostEnabled = false;
 
     float horizontalMove = 0f;
     bool jump = false;
@@ -17,21 +22,27 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Awake() 
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed; 
+        controls = new PlayerControlActions();
 
-        if (Input.GetButtonDown("Jump"))
-        {
-            jump = true;
-        }
+        controls.Player.Jump.performed += _ => Jump();
+        controls.Player.Move.performed += ctx => Move(ctx.ReadValue<float>());
+        controls.Player.Boost.performed += _ => Boost(true);
+    }
 
-        // TODO: Determine which button should control boost (maybe "Jump" while not grounded?)
-        if (Input.GetButtonDown("Fire1")) // left Ctrl
-        {
-            boost = true;
-        }
+    void Move(float direction)
+    {
+        horizontalMove = direction * runSpeed;
+    }
+
+    void Jump() 
+    {
+        jump = true;
+    }
+
+    void Boost(bool enabled) {
+        boost = true;
     }
 
     void FixedUpdate()
@@ -39,5 +50,15 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump, boost);
         jump = false;
         boost = false;
+    }
+
+    private void OnEnable()
+    {
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Disable();
     }
 }
