@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontalMove = 0f;
     bool jump = false;
+    bool boost = false;
 
     void Start()
     {
@@ -25,11 +26,18 @@ public class PlayerMovement : MonoBehaviour
         {
             jump = true;
         }
+
+        // TODO: Determine which button should control boost (maybe "Jump" while not grounded?)
+        if (Input.GetButtonDown("Fire1")) // left Ctrl
+        {
+            boost = true;
+        }
     }
 
     void FixedUpdate()
     {
-        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+        controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump, boost);
         jump = false;
+        boost = false;
     }
 }
