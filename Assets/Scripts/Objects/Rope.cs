@@ -130,6 +130,10 @@ public class Rope : MonoBehaviour
         lineRenderer.SetPositions(ropePositions);
     }
 
+    public void SetRopeEnd(Transform t) {
+        this.ropeEnd = t;
+    }
+
     public struct RopeSegment 
     {
         public Vector2 posNow;
